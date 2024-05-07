@@ -104,6 +104,7 @@ body {
 
 #showUsers div {
     display: flex;
+    font-size: 0.8em;
     width: 90%;
     justify-content: space-between;
     padding:15px;
@@ -115,7 +116,6 @@ body {
     height: 50px;
     background-color: #FC5C7D;
     color: white;
-    font-size: 1.5em;
     border-radius: 15px;
     border: none;
     transition: background-color 0.5s ease;

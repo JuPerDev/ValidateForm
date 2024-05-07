@@ -74,21 +74,30 @@ document.getElementById('formCont').addEventListener('submit', (event) => {
 
         alert('El formulario se ha enviado con éxito');
         document.getElementById('formCont').reset();
-        recolector();
+        clearDiv();
+        recollect();
     }
 })
 
-const usersRef = db.collection('users');
-const showUsers = document.getElementById('showUsers')
+recollect();
 
-function recolector(){
+function clearDiv(){
+   while(container.firstChild)
+        {   
+            container.removeChild(container.firstChild);
+        } 
+}
+function recollect(){
+    const usersRef = db.collection('users');
+    const showUsers = document.getElementById('showUsers')
     usersRef.get()
     .then(snapshot => {
-        // Iterar sobre cada documento en el resultado de la consulta
-        snapshot.forEach(doc => {
+        
+       // Iterar sobre cada documento en el resultado de la consulta
+        
+       snapshot.forEach(doc => {
         // Obtener los datos de cada documento
         const userData = doc.data();
-
         const container = document.createElement('div')
         const paragraph = document.createElement('p');
         const eraseButton = document.createElement('button')
@@ -106,5 +115,3 @@ function recolector(){
         console.error('Error al obtener usuarios:', error);
     });
 }
-
-recolector();
